@@ -248,7 +248,7 @@
     <button class="tile" onclick="jumpFilter(event,'Video')"><span class="t-ic">▶️</span><span id="tVideo">Video</span></button>
     <button class="tile" onclick="jumpFilter(event,'ပုံ')"><span class="t-ic">🖼️</span><span id="tImgs">ပုံများ</span></button>
     <a class="tile" href="#feed" onclick="jumpFilter(event,'')"><span class="t-ic">📰</span><span id="tPosts">နောက်ဆုံး Posts</span></a>
-    <a class="tile" href="#" onclick="openSupport(event)"><span class="t-ic">💬</span><span id="tSupport">Support Chat</span></a>
+    
     <a class="tile" href="./"><span class="t-ic">🏠</span><span id="tHome">ပင်မ</span></a>
   </div></div>
   <a class="promo" href="https://github.com/moehtetdata/moehtet/releases/download/v0.3.3/MoeHtet.apk" target="_blank" rel="noopener"><div><b id="promoB">📱 MoeHtet VPN — အသစ်</b><small id="promoS">MASQUE နည်းပညာနဲ့ မြန်ဆန်တဲ့ VPN app</small></div><span class="p-btn" id="promoBtn">ဒေါင်းလုဒ် ⬇️</span></a>
@@ -321,7 +321,7 @@ function jumpFilter(e,f){
 }
 function openSupport(e){
   if(e) e.preventDefault();
-  if(window.Tawk_API && Tawk_API.maximize) Tawk_API.maximize();
+  if(window.Tawk_API){if(Tawk_API.showWidget) Tawk_API.showWidget();if(Tawk_API.maximize) Tawk_API.maximize();}
 }
 var singleId='';
 function start(posts){
@@ -465,7 +465,7 @@ document.body.appendChild(s);
 </script>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date(); Tawk_API.onLoad=function(){if(Tawk_API.hideWidget) Tawk_API.hideWidget();};
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
