@@ -20,11 +20,11 @@
   .greet-row{display:flex; align-items:center; justify-content:space-between; gap:12px}
   .greet-left{display:flex; align-items:center; gap:12px}
   .avatar{
-    width:47px; height:47px; border-radius:50%; display:grid; place-items:center; color:#fff;
+    width:47px; height:47px; border-radius:50%; display:grid; place-items:center; color:#fff; position:relative;
     background:linear-gradient(140deg,var(--blue),var(--blue2));
     font-size:21px; font-weight:900; box-shadow:0 10px 22px rgba(0,87,217,.30);
   }
-  .greet{font-size:13px; color:var(--muted)}
+  .avatar-check{position:absolute; right:-3px; bottom:-3px; width:18px; height:18px; border-radius:50%; background:#f5a623; border:2px solid #fff; display:grid; place-items:center; color:#fff; font-size:11px; font-weight:900; line-height:1; box-shadow:0 2px 6px rgba(245,166,35,.45);} .greet{font-size:13px; color:var(--muted)}
   .gname{font-size:19px; font-weight:850; letter-spacing:-.01em; margin-top:2px; color:var(--ink)}
   .star-pill{
     padding:8px 12px; border-radius:999px; font-size:12.5px; font-weight:800; color:#9a6a00;
@@ -153,11 +153,11 @@
   .views{color:var(--soft); font-size:12px; font-weight:650}
   .views b{color:var(--muted)}
   .card h2{margin:0; font-size:21px; line-height:1.4; letter-spacing:-.01em; color:var(--ink)}
-  .card p{color:#46566e; line-height:1.85; margin:10px 0 0; white-space:pre-wrap; word-break:break-word; font-size:15.5px}
+  .card p{color:#46566e; line-height:1.85; margin:10px 0 0; white-space:pre-wrap; word-break:break-word; font-size:15.5px} .card p a,.post-link{color:#0057d9; font-weight:800; text-decoration:underline; text-underline-offset:2px; opacity:1; filter:none; overflow-wrap:anywhere;} .vip-badge{display:inline-flex;align-items:center;gap:4px;padding:6px 11px;border-radius:999px;color:#9a6a00;background:#fff3d6;border:1px solid #ffe1a1;font-size:12px;font-weight:800} .locked{margin-top:14px;padding:16px;border-radius:18px;background:#fff8e6;border:1px dashed #f5a623;text-align:center;color:#33465f;font-size:14px;line-height:1.6} .locked b{display:block;margin-bottom:12px}
   .btn{
     display:inline-flex; align-items:center; justify-content:center; min-height:44px;
     background:linear-gradient(135deg,var(--blue),var(--blue2)); color:#fff; text-decoration:none;
-    padding:11px 18px; border-radius:999px; font-weight:800; font-size:14px;
+    padding:11px 18px; border-radius:999px; font-weight:900; font-size:14px; filter:none; opacity:1;
     box-shadow:0 10px 22px rgba(0,87,217,.25);
   }
   .btn.file{background:linear-gradient(135deg,#0dbd78,#079669); box-shadow:0 10px 22px rgba(16,185,129,.22)}
@@ -222,7 +222,7 @@
 <body>
 <div class="wrap">
   <div class="greet-row">
-    <div class="greet-left"><div class="avatar">M</div><div><div class="greet" id="greetText">မင်္ဂလာပါ 👋</div><div class="gname">MoeHtet Tech Sharing</div></div></div>
+    <div class="greet-left"><div class="avatar">M<span class="avatar-check">✓</span></div><div><div class="greet" id="greetText">မင်္ဂလာပါ 👋</div><div class="gname">MoeHtet Tech Sharing</div></div></div>
     <div class="lang-wrap"><button class="lang-btn" id="langBtn" onclick="toggleLangMenu(event)" aria-label="Language">🌐</button><div class="lang-menu" id="langMenu"><button onclick="setLang('my')">🇲🇲 မြန်မာ<span class="tick" id="tickMy">✓</span></button><button onclick="setLang('en')">🇬🇧 English<span class="tick" id="tickEn">✓</span></button></div></div>
   </div>
   <div class="searchbar"><span>🔍</span><input id="search" type="search" placeholder="Post ရှာရန်…" oninput="onSearch(this)"></div>
@@ -233,7 +233,7 @@
   </div>
   <div class="quick">
     <button class="qa active" data-f="" onclick="setFilter(this,'')"><span class="qa-ic">🧾</span><span id="qaAll">အားလုံး</span></button>
-    <button class="qa" data-f="App" onclick="setFilter(this,'App')"><span class="qa-ic">⬇️</span><span id="qaApps">Apps</span></button>
+    <button class="qa" data-f="App" onclick="setFilter(this,'App')"><span class="qa-ic"><svg viewBox="0 0 24 24" width="22" height="22" style="display:block" role="img" aria-label="Apps"><rect x="3" y="3" width="8" height="8" rx="2" fill="#0057d9"/><rect x="13" y="3" width="8" height="8" rx="2" fill="#0090ff"/><rect x="3" y="13" width="8" height="8" rx="2" fill="#0090ff"/><rect x="13" y="13" width="8" height="8" rx="2" fill="#0057d9"/></svg></span><span id="qaApps">Apps</span></button>
     <button class="qa" data-f="File" onclick="setFilter(this,'File')"><span class="qa-ic">📄</span><span id="qaFiles">Files</span></button>
     <button class="qa" data-f="Video" onclick="setFilter(this,'Video')"><span class="qa-ic">▶️</span><span id="qaVideo">Video</span></button>
     <button class="qa" data-f="ပုံ" onclick="setFilter(this,'ပုံ')"><span class="qa-ic">🖼️</span><span id="qaImgs">ပုံများ</span></button>
@@ -243,7 +243,7 @@
   <div class="sec-head"><div class="sec-title"><span class="pop-badge">👑</span><span class="pop-word" id="popTitle">Popular</span></div><div class="sec-more" id="popMore">Services</div></div>
   <div class="pop-sheet"><div class="pop-grid">
     <a class="tile" href="https://github.com/moehtetdata/moehtet/releases/download/v0.3.3/MoeHtet.apk" target="_blank" rel="noopener"><span class="t-ic">📱</span><span id="tVpn">MoeHtet VPN</span></a>
-    <button class="tile" onclick="jumpFilter(event,'App')"><span class="t-ic">⬇️</span><span id="tApps">Apps</span></button>
+    <button class="tile" onclick="jumpFilter(event,'App')"><span class="t-ic"><svg viewBox="0 0 24 24" width="22" height="22" style="display:block" role="img" aria-label="Apps"><rect x="3" y="3" width="8" height="8" rx="2" fill="#0057d9"/><rect x="13" y="3" width="8" height="8" rx="2" fill="#0090ff"/><rect x="3" y="13" width="8" height="8" rx="2" fill="#0090ff"/><rect x="13" y="13" width="8" height="8" rx="2" fill="#0057d9"/></svg></span><span id="tApps">Apps</span></button>
     <button class="tile" onclick="jumpFilter(event,'File')"><span class="t-ic">📂</span><span id="tFiles">Files</span></button>
     <button class="tile" onclick="jumpFilter(event,'Video')"><span class="t-ic">▶️</span><span id="tVideo">Video</span></button>
     <button class="tile" onclick="jumpFilter(event,'ပုံ')"><span class="t-ic">🖼️</span><span id="tImgs">ပုံများ</span></button>
@@ -259,15 +259,15 @@
 <footer id="footText">© MoeHtet — နည်းပညာ Sharing</footer>
 <nav class="bottom-nav"><div class="bn-in">
   <a href="./" class="active"><span class="bn-ic">🏠</span><span id="nHome">Home</span></a>
-  <a href="#feed"><span class="bn-ic">📰</span><span id="nPosts">Posts</span></a>
-  <a class="bn-center" href="https://github.com/moehtetdata/moehtet/releases/download/v0.3.3/MoeHtet.apk" target="_blank" rel="noopener"><span class="fab">⬇️</span><span id="nVpn">VPN App</span></a>
+  <a href="#feed" onclick="jumpFilter(event,'')"><span class="bn-ic">📰</span><span id="nPosts">Posts</span></a>
+  <a class="bn-center" href="https://github.com/moehtetdata/moehtet/releases/download/v0.3.3/MoeHtet.apk" target="_blank" rel="noopener"><span class="fab"><svg viewBox="0 0 24 24" width="24" height="24" style="display:block" role="img" aria-label="VPN App"><path d="M12 2l8 3v6c0 5-3.5 9.3-8 11-4.5-1.7-8-6-8-11V5z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span id="nVpn">VPN App</span></a>
   <a href="#feed" onclick="jumpFilter(event,'File')"><span class="bn-ic">📂</span><span id="nFiles">Files</span></a>
   <a href="#" onclick="openSupport(event)"><span class="bn-ic"><svg viewBox="0 0 48 48" width="26" height="26" style="display:block" role="img" aria-label="Support Chat"><path d="M11 48c2-6 6-9 13-9s11 3 13 9z" fill="#0057d9"/><circle cx="24" cy="26" r="12" fill="#ffcf9e"/><path d="M12 26a12 12 0 0 1 24 0z" fill="#2e2a33"/><path d="M11 27V21a13 13 0 0 1 26 0v6" fill="none" stroke="#13233d" stroke-width="4" stroke-linecap="round"/><rect x="7" y="22" width="7" height="13" rx="3.5" fill="#0057d9"/><rect x="34" y="22" width="7" height="13" rx="3.5" fill="#0090ff"/><circle cx="19.5" cy="27" r="1.7" fill="#13233d"/><circle cx="28.5" cy="27" r="1.7" fill="#13233d"/><path d="M20 32q4 3 8 0" fill="none" stroke="#13233d" stroke-width="2" stroke-linecap="round"/></svg></span><span id="nSupport">Support</span></a>
 </div></nav>
 <script>
 var API = 'https://script.google.com/macros/s/AKfycbyeXvBLYcbe038_QFTxiwulGH-oVbgsXI5_9VZ025MjfMaVGlRa_2QUX-0T6LTQeaxG8w/exec';
-function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function btnFor(p){
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');} function linkify(s){var t=esc(s);return t.replace(/(https?:\/\/[^\s<>"']+)/g,function(u){return '<a class="post-link" href="'+u+'" target="_blank" rel="noopener">'+u+'</a>';});}
+var VIP_COST=10; function getPoints(){try{return parseInt(localStorage.getItem('mh_points')||'0',10)||0;}catch(e){return 0;}} function getUnlocked(){try{return JSON.parse(localStorage.getItem('mh_unlocked')||'{}')||{};}catch(e){return {};}} function isVip(p){return !!(p&&p.title&&p.title.indexOf('[VIP]')>-1);} function isUnlocked(id){try{return !!getUnlocked()[id];}catch(e){return false;}} function cleanTitle(t){return String(t||'').replace('[VIP]','').trim();} function refreshPost(){start(allPosts);} function unlockPost(id,btn){if(isUnlocked(id)){refreshPost();return;}var pts=getPoints();if(pts<VIP_COST){if(btn){btn.textContent='Need '+(VIP_COST-pts)+' more points — you have '+pts+'P';btn.disabled=true;}return;}var np=pts-VIP_COST;try{localStorage.setItem('mh_points',String(np));}catch(e){}try{var u=getUnlocked();u[id]=true;localStorage.setItem('mh_unlocked',JSON.stringify(u));}catch(e){}var el=document.getElementById('pointsPill');if(el)el.textContent='💎 '+np+'P';refreshPost();} function btnFor(p){
   if(!p.link) return '';
   if(p.type.indexOf('File')>-1) return '<a class="btn file" href="'+esc(p.link)+'" target="_blank" rel="noopener">'+T('btn_file')+'</a>';
   if(p.type.indexOf('Video')>-1) return '<a class="btn video" href="'+esc(p.link)+'" target="_blank" rel="noopener">'+T('btn_video')+'</a>';
@@ -279,9 +279,9 @@ function cardHtml(p){
   var ds=d? ('<div class="date">'+d.toLocaleDateString('en-GB')+'</div>') : '';
   var img=(p.type.indexOf('ပုံ')>-1 && p.link)? '<img class="img" src="'+esc(p.link)+'" alt="">' : '';
   var vid=(!img && p.type.indexOf('Video')>-1 && p.link && p.link.indexOf('drive.google.com')>-1)? '<div style="position:relative;padding-top:56.25%;margin-top:10px"><iframe src="'+esc(p.link)+'" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:12px" allowfullscreen></iframe></div>' : '';
-  var media=img||vid;
-  var share=p.id? '<button class="sharebtn" onclick="copyLink(this,\''+esc(p.id)+'\')">'+T('copy')+'</button>' : '';
-  return '<article class="card" data-pid="'+esc(p.id||'')+'"><div class="meta-row"><span class="tag">'+esc(p.type)+'</span><div class="meta-right"><span class="views">👁 <b id="vw-'+esc(p.id||'')+'">'+(p.views||0)+'</b></span>'+ds+'</div></div><h2>'+esc(p.title)+'</h2><p>'+esc(p.body)+'</p>'+media+'<div class="actions">'+(media?'':btnFor(p))+share+'</div></article>';
+  var media=img||vid; var vip=isVip(p); var unlocked=!vip||isUnlocked(p.id); var title=cleanTitle(p.title); var badge=vip?'<span class="vip-badge">👑 VIP</span>':''; var bodyHtml=unlocked?linkify(p.body):'🔒 VIP post - unlock to see the download'; if(!unlocked) media='';
+  var share=p.id? '<button class="sharebtn" onclick="copyLink(this,\''+esc(p.id)+'\')">'+T('copy')+'</button>' : ''; var acts=unlocked?'<div class="actions">'+(media?'':btnFor(p))+share+'</div>':'<div class="locked"><b>🔒 VIP — Unlock for 10P (you have '+getPoints()+'P)</b><button class="btn" data-pid="'+esc(p.id)+'" onclick="unlockPost(this.dataset.pid,this)">🔓 Unlock for 10P</button></div><div class="actions">'+share+'</div>';
+  return '<article class="card" data-pid="'+esc(p.id||'')+'"><div class="meta-row"><span class="tag">'+esc(p.type)+'</span>'+badge+'<div class="meta-right"><span class="views">👁 <b id="vw-'+esc(p.id||'')+'">'+(p.views||0)+'</b></span>'+ds+'</div></div><h2>'+esc(title)+'</h2><p>'+bodyHtml+'</p>'+media+acts+'</article>';
 }
 var allPosts=[];
 var curFilter='';
@@ -418,7 +418,7 @@ document.addEventListener('click',function(e){
 applyLang();
 (function(){
   var pts=1;
-  try{ pts=(parseInt(localStorage.getItem('mh_points')||'0',10)||0)+1; localStorage.setItem('mh_points',String(pts)); }catch(e){}
+  try{ var d=new Date(); var today=d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); var last=localStorage.getItem('mh_last_checkin')||''; pts=parseInt(localStorage.getItem('mh_points')||'0',10)||0; if(last!==today){ pts+=1; localStorage.setItem('mh_points',String(pts)); localStorage.setItem('mh_last_checkin',today); } }catch(e){}
   var el=document.getElementById('pointsPill');
   if(el) el.textContent='💎 '+pts+'P';
 })();
